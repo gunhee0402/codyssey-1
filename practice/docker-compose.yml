@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  my-web:
+    build: .  # 현재 폴더(.)에 있는 Dockerfile을 읽어서 이미지를 만들라는 뜻
+    container_name: my-web-container
+    ports:
+      - "8081:80"  # 우리가 정한 8081 포트 사용
+    volumes:
+      - .:/usr/share/nginx/html  # 현재 폴더와 컨테이너 내부를 실시간 연결
