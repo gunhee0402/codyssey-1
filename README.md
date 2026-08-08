@@ -66,6 +66,8 @@ codyssey-1/
 
 각 파일의 역할은 다음과 같습니다.
 
+| 파일 | 역할 |
+|---|---|
 | `README.md` | 프로젝트 및 실습 과정 기록 |
 | `Dockerfile` | Nginx 기반 Docker Image 생성 |
 | `docker-compose.yml` | Docker Compose 실행 설정 |
@@ -169,6 +171,8 @@ $ chmod 755 test.txt
 
 `755`는 다음과 같이 해석할 수 있습니다.
 
+| 숫자 | 구분 |
+|---|---|
 | 7 | `rwx` |
 | 5 | `r-x` |
 | 5 | `r-x` |
