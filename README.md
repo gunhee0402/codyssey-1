@@ -11,13 +11,13 @@
 
 # 2. 실행환경
 
-| OS | Windows 11 + WSL2 |
-| Terminal | Git Bash |
-| IDE | Visual Studio Code |
-| Docker | Docker 29.6.2 |
-| Docker Compose | Docker Compose v5.3.1 |
-| Git | Git for Windows |
-| Repository | GitHub |
+ | OS | Windows 11 + WSL2 |
+ | Terminal | Git Bash |
+ | IDE | Visual Studio Code |
+ | Docker | Docker 29.6.2 |
+ | Docker Compose | Docker Compose v5.3.1 |
+ | Git | Git for Windows |
+ | Repository | GitHub |
 
 ---
 
@@ -490,7 +490,7 @@ b618cae534da   my-web-server   "/docker-entrypoint.…"   49 seconds ago   Up 48
 http://localhost:8080
 ```
 
-![localhost:8080 접속 결과](./images/localhost_8080.png)
+![localhost:8080 접속 결과](./practice/images/localhost_8080.png)
 
 ---
 
@@ -592,9 +592,9 @@ $ docker run -d -p 8081:80 -v "/$(pwd):/usr/share/nginx/html" --name volume-test
 a692222b4e3f82f19a1df02c81f8c700f0c258b7e58e8f2fbb0060345f474eca
 ```
 
-![localhost:8081 접속 결과](./images/localhost_8081.png)
+![localhost:8081 접속 결과](./practice/images/localhost_8081.png)
 
-![8081 포트 및 Volume 동기화 확인](./images/volume.png)
+![8081 포트 및 Volume 동기화 확인](./practice/images/volume.png)
 
 ---
 
