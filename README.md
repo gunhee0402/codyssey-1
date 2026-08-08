@@ -11,14 +11,13 @@
 
 # 2. 실행환경
 
- | OS | Windows 11 + WSL2 |
- | Terminal | Git Bash |
- | IDE | Visual Studio Code |
- | Docker | Docker 29.6.2 |
- | Docker Compose | Docker Compose v5.3.1 |
- | Git | Git for Windows |
- | Repository | GitHub |
-
+| OS | Windows 11 + WSL2 |
+| Terminal | Git Bash |
+| IDE | Visual Studio Code |
+| Docker | Docker 29.6.2 |
+| Docker Compose | Docker Compose v5.3.1 |
+| Git | Git for Windows |
+| Repository | GitHub |
 ---
 
 # 3. 수행항목 체크리스트
@@ -47,17 +46,20 @@
 # 4. 디렉토리 구조
 
 ```text
-codysssey-1/
+## 4. 디렉터리 구조
+
+```text
+codyssey-1/
+├── README.md
 └── practice/
-    ├── docker-compose.yml
+    ├── images/
+    │   ├── localhost_8080.png
+    │   ├── localhost_8081.png
+    │   └── volume.png
     ├── Dockerfile
+    ├── docker-compose.yml
     ├── index.html
-    ├── test.txt
-    ├── README.md
-    └── images/
-        ├── localhost_8080.png
-        ├── localhost_8081.png
-        └── volume.png
+    └── test.txt
 ```
 
 각 파일의 역할은 다음과 같습니다.
