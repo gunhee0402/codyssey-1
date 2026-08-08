@@ -537,7 +537,58 @@ Docker Image 내부에 파일을 포함시키는 방식은 Image를 다시 Build
 
 ---
 
-### 5.4.2 index.html 파일 Bind Mount
+### 5.4.2 Bind Moount - 데이터 영속성 검증 (volume)
+
+```bash
+ls -la
+jkhlm@□Ŵ□ MINGW64 ~/codyssey-1/practice (main)
+$ ls -la
+total 15
+drwxr-xr-x 1 jkhlm 197609   0 Aug  8 23:10 ./
+drwxr-xr-x 1 jkhlm 197609   0 Aug  8 23:10 ../
+-rw-r--r-- 1 jkhlm 197609 351 Aug  5 21:34 docker-compose.yml
+-rw-r--r-- 1 jkhlm 197609 398 Aug  5 21:14 Dockerfile
+drwxr-xr-x 1 jkhlm 197609   0 Aug  8 18:20 images/
+-rw-r--r-- 1 jkhlm 197609 773 Aug  5 21:35 index.html
+-rw-r--r-- 1 jkhlm 197609   0 Aug  5 21:08 test.txt
+-rw-r--r-- 1 jkhlm 197609  34 Aug  8 23:13 volume-test.txt
+MSYS_NO_PATHCONV=1 docker run -d -p 8081:80 -v "C:/Users/jkhlm/codyssey-1/practice:/usr/share/nginx/html" --name volume-test my-web-server
+38e18b6c356197cbf7e0ddda91e74331c35af8703b29d10882aa83fcef454b59
+total 8
+drwxrwxrwx 1 root root 4096 Aug  8 14:10 .
+drwxr-xr-x 1 root root 4096 Aug  5 00:21 ..
+-rwxrwxrwx 1 root root  398 Aug  5 12:14 Dockerfile
+-rwxrwxrwx 1 root root  351 Aug  5 12:34 docker-compose.yml
+drwxrwxrwx 1 root root 4096 Aug  8 09:20 images
+-rwxrwxrwx 1 root root  773 Aug  5 12:35 index.html
+-rwxrwxrwx 1 root root    0 Aug  5 12:08 test.txt
+-rwxrwxrwx 1 root root   34 Aug  8 14:13 volume-test.txt
+MSYS_NO_PATHCONV=1 docker exec volume-test cat /usr/share/nginx/html/volume-test.txt
+볼륨 영속성 테스트 성공
+MSYS_NO_PATHCONV=1 docker exec volume-test cat /usr/share/nginx/html/volume-test.txt
+볼륨 영속성 테스트 성공
+docker rm -f volume-test
+volume-test
+cat volume-test.txt
+MSYS_NO_PATHCONV=1 docker run -d -p 8081:80 -v "C:/Users/jkhlm/codyssey-1/practice:/usr/share/nginx/html" --name volume-test my-web-server
+37da1b5079c29c049c4666193c996752fb34926d0504d1a4918a24804292890d
+MSYS_NO_PATHCONV=1 docker exec volume-test cat /usr/share/nginx/html/volume-test.txt
+볼륨 영속성 테스트 성공
+ls -la
+jkhlm@□Ŵ□ MINGW64 ~/codyssey-1/practice (main)
+$ ls -la
+total 15
+drwxr-xr-x 1 jkhlm 197609   0 Aug  8 23:10 ./
+drwxr-xr-x 1 jkhlm 197609   0 Aug  8 23:10 ../
+-rw-r--r-- 1 jkhlm 197609 351 Aug  5 21:34 docker-compose.yml
+-rw-r--r-- 1 jkhlm 197609 398 Aug  5 21:14 Dockerfile
+drwxr-xr-x 1 jkhlm 197609   0 Aug  8 18:20 images/
+-rw-r--r-- 1 jkhlm 197609 773 Aug  5 21:35 index.html
+-rw-r--r-- 1 jkhlm 197609   0 Aug  5 21:08 test.txt
+-rw-r--r-- 1 jkhlm 197609  34 Aug  8 23:13 volume-test.txt
+```
+
+### 5.4.3 index.html 파일 Bind Mount
 
 처음 프로젝트의 `index.html` 파일 하나만 Container 내부 Nginx 웹 루트와 연결하였습니다.
 
@@ -559,7 +610,7 @@ b93b8e828e0a6cb524470f683a0df5f4998b7d4712edd80b980739f11919e788
 
 ---
 
-### 5.4.3 Bind Mount Container 종료 및 삭제
+### 5.4.4 Bind Mount Container 종료 및 삭제
 
 첫 번째 Bind Mount 실습이 끝난 후 Container를 종료하고 삭제하였습니다.
 
@@ -582,7 +633,7 @@ volume-test
 
 ---
 
-### 5.4.4 프로젝트 폴더 전체 Bind Mount
+### 5.4.5 프로젝트 폴더 전체 Bind Mount
 
 다음으로 `index.html` 파일 하나가 아니라 현재 프로젝트 폴더 전체를 Container의 Nginx 웹 루트와 연결하였습니다.
 
@@ -606,7 +657,7 @@ a692222b4e3f82f19a1df02c81f8c700f0c258b7e58e8f2fbb0060345f474eca
 
 ---
 
-### 5.4.5 왜 8080이 아니라 8081을 사용했는가?
+### 5.4.6 왜 8080이 아니라 8081을 사용했는가?
 
 처음 Container 실행에서는 `8080:80`을 사용했지만, 이후 프로젝트 전체 Bind Mount에서는 `8081:80`을 사용하였습니다.
 
