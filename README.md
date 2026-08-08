@@ -11,6 +11,8 @@
 
 # 2. 실행환경
 
+| 구분 | 사용 환경 |
+|---|---|
 | OS | Windows 11 + WSL2 |
 | Terminal | Git Bash |
 | IDE | Visual Studio Code |
